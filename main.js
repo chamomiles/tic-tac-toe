@@ -52,6 +52,7 @@ const game = {
 
     update() {
         this.updateMarks();
+        this.switchPlayer();
     },
 
     setMark(e) {
