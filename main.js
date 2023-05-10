@@ -33,10 +33,23 @@ const game = {
 
     finished: false,
 
+    update() {
+        for (let i = 0; i < this.board.length ; i++) {
+            if (this.board[i] === 1) {
+                document.querySelector(`#cell-${i}`).innerText = 'X';
+            } else if (this.board[i] === 2) {
+                document.querySelector(`#cell-${i}`).innerText = 'O';
+            } else {
+                document.querySelector(`#cell-${i}`).innerText = '';
+            }
+        }
+    },
     setMark(e) {
         const id = e.target.id.slice(-1);
         game.board[id] = 1;
         console.log(game.board);
+
+        game.update();
     },
 }
 
