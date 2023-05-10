@@ -51,15 +51,7 @@ const game = {
     },
 
     update() {
-        for (let i = 0; i < this.board.length ; i++) {
-            if (this.board[i] === 1) {
-                document.querySelector(`#cell-${i}`).innerText = this.players[0].mark;
-            } else if (this.board[i] === 2) {
-                document.querySelector(`#cell-${i}`).innerText = this.players[1].mark;
-            } else {
-                document.querySelector(`#cell-${i}`).innerText = '';
-            }
-        }
+        this.updateMarks();
     },
 
     setMark(e) {
@@ -78,6 +70,17 @@ const game = {
         }
     },
 
+    updateMarks() {
+        for (let i = 0; i < this.board.length ; i++) {
+            if (this.board[i] === 1) {
+                document.querySelector(`#cell-${i}`).innerText = this.players[0].mark;
+            } else if (this.board[i] === 2) {
+                document.querySelector(`#cell-${i}`).innerText = this.players[1].mark;
+            } else {
+                document.querySelector(`#cell-${i}`).innerText = '';
+            }
+        }
+    }
 }
 
 game.start();
