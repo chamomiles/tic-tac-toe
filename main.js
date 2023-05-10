@@ -35,7 +35,13 @@ const game = {
         {id: 1, mark: 'x'},
         {id: 2, mark: 'o'}
     ],
+    currentPlayer,
     finished: false,
+
+    start() {
+        this.board = this.board.map(item => 0);
+        this.currentPlayer = this.players[0];
+    },
 
     update() {
         for (let i = 0; i < this.board.length ; i++) {
@@ -70,3 +76,5 @@ const game = {
 for (const boardElement of game.boardElements) {
     boardElement.addEventListener('click', game.setMark);
 }
+
+game.start();
