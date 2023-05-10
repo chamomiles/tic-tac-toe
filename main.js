@@ -52,6 +52,7 @@ const game = {
 
     update() {
         this.updateMarks();
+        this.gameIsOver();
         this.switchPlayer();
     },
 
@@ -88,11 +89,11 @@ const game = {
         }
     },
 
-    checkForGameEnd() {
-        return this.checkForWin() || this.checkForFull();
+    gameIsOver() {
+        return this.winExists() || this.boardIsFull();
     },
 
-    checkForWin() {
+    winExists() {
         // Horizontal wins
         if (this.board.slice(0, 3).every((item, _, arr) => item === arr[0])) return this.board[0];
         if (this.board.slice(3, 6).every((item, _, arr) => item === arr[0])) return this.board[3];
@@ -111,7 +112,7 @@ const game = {
         return 0;
     },
 
-    checkForFull() {
+    boardIsFull() {
         return !this.board.includes(0);
     }
 }
