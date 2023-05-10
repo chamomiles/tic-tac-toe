@@ -29,5 +29,15 @@ const game = {
         0, 0, 0
     ],
 
+    boardElements: document.querySelectorAll('.cell'),
+
     finished: false,
+
+    updateCell(e) {
+        console.log(e.target.id);
+    },
+}
+
+for (const boardElement of game.boardElements) {
+    boardElement.addEventListener('click', game.updateCell);
 }
