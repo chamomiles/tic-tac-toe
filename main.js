@@ -32,18 +32,17 @@ const game = {
     boardElements: document.querySelectorAll('.cell'),
 
     players: [
-        {mark: 'x'},
-        {mark: 'o'}
+        {id: 1, mark: 'x'},
+        {id: 2, mark: 'o'}
     ],
-    currentPlayer: players[0],
     finished: false,
 
     update() {
         for (let i = 0; i < this.board.length ; i++) {
             if (this.board[i] === 1) {
-                document.querySelector(`#cell-${i}`).innerText = 'X';
+                document.querySelector(`#cell-${i}`).innerText = this.players[0].mark;
             } else if (this.board[i] === 2) {
-                document.querySelector(`#cell-${i}`).innerText = 'O';
+                document.querySelector(`#cell-${i}`).innerText = this.players[1].mark;
             } else {
                 document.querySelector(`#cell-${i}`).innerText = '';
             }
@@ -52,19 +51,20 @@ const game = {
 
     setMark(e) {
         const id = e.target.id.slice(-1);
-        game.board[id] = 1;
+        game.board[id] = this.currentPlayer.id;
         console.log(game.board);
 
         game.update();
     },
 
     switchPlayer() {
-        if (this.currentPlayer === players[0]) {
-            this.currentPlayer = players[1];
+        if (this.currentPlayer === this.players[0]) {
+            this.currentPlayer = this.players[1];
         } else {
-            this.currentPlayer = players[0];
+            this.currentPlayer = this.players[0];
         }
-    }
+    },
+
 }
 
 for (const boardElement of game.boardElements) {
