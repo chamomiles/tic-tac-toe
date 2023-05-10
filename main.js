@@ -86,6 +86,19 @@ const game = {
                 document.querySelector(`#cell-${i}`).innerText = '';
             }
         }
+    },
+
+    checkForGameEnd() {
+        this.checkForWin();
+        this.checkForFull();
+    },
+
+    checkForWin() {
+
+    },
+
+    checkForFull() {
+        
     }
 }
 
