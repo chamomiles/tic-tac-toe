@@ -42,6 +42,7 @@ const game = {
         this.board = this.board.map(item => 0);
         this.currentPlayer = this.players[0];
         this.addEventListeners();
+        this.updateMarks();
     },
 
     addEventListeners() {
@@ -52,8 +53,8 @@ const game = {
 
     update() {
         this.updateMarks();
-        this.gameIsOver();
         this.switchPlayer();
+        if (this.gameIsOver()) this.start();
     },
 
     setMark(e) {
