@@ -39,23 +39,28 @@ const game = {
     finished: false,
 
     start() {
-        this.board = this.board.map(item => 0);
-        this.currentPlayer = this.players[0];
-        this.addEventListeners();
-        this.updateMarks();
-        this.reenableButtons();
+        game.board = game.board.map(item => 0);
+        game.currentPlayer = game.players[0];
+        game.addEventListeners();
+        game.updateMarks();
+        game.reenableButtons();
+        game.disableRestartButton();
     },
 
     addEventListeners() {
+        // Cell buttons
         for (const boardElement of game.boardElements) {
             boardElement.addEventListener('click', game.setMark);
-        }
+        };
+
+        // Restart button
+        document.querySelector('#restart-button').addEventListener('click', this.start);
     },
 
     update() {
         this.updateMarks();
         this.switchPlayer();
-        if (this.gameIsOver()) this.start();
+        if (this.gameIsOver()) this.enableRestartButton();
     },
 
     setMark(e) {
@@ -97,18 +102,18 @@ const game = {
 
     winExists() {
         // Horizontal wins
-        if (this.board.slice(0, 3).every((item, _, arr) => item === arr[0])) return this.board[0];
-        if (this.board.slice(3, 6).every((item, _, arr) => item === arr[0])) return this.board[3];
-        if (this.board.slice(6, 9).every((item, _, arr) => item === arr[0])) return this.board[6];
+        if (this.board.slice(0, 3).every((item, _, arr) => item === arr[0] && item !== 0)) return this.board[0];
+        if (this.board.slice(3, 6).every((item, _, arr) => item === arr[0] && item !== 0)) return this.board[3];
+        if (this.board.slice(6, 9).every((item, _, arr) => item === arr[0] && item !== 0)) return this.board[6];
 
         // Vertical wins
-        if (this.board.filter((_, index) => index % 3 === 0).every((item, _, arr) => item === arr[0])) return this.board[0];
-        if (this.board.filter((_, index) => (index - 1) % 3 === 0).every((item, _, arr) => item === arr[0])) return this.board[1];
-        if (this.board.filter((_, index) => (index - 2) % 3 === 0).every((item, _, arr) => item === arr[0])) return this.board[2];
+        if (this.board.filter((_, index) => index % 3 === 0).every((item, _, arr) => item === arr[0] && item !== 0)) return this.board[0];
+        if (this.board.filter((_, index) => (index - 1) % 3 === 0).every((item, _, arr) => item === arr[0] && item !== 0)) return this.board[1];
+        if (this.board.filter((_, index) => (index - 2) % 3 === 0).every((item, _, arr) => item === arr[0] && item !== 0)) return this.board[2];
 
         // Diagonal wins
-        if (this.board.filter((_, index) => index % 4 === 0).every((item, _, arr) => item === arr[0])) return this.board[0];
-        if (this.board[2] === this.board[4] && this.board[2] === this.board[6]) return this.board[2];
+        if (this.board.filter((_, index) => index % 4 === 0).every((item, _, arr) => item === arr[0] && item !== 0)) return this.board[0];
+        if (this.board[2] === this.board[4] && this.board[2] === this.board[6] && this.board[2] !== 0) return this.board[2];
 
         // No win
         return 0;
@@ -124,8 +129,12 @@ const game = {
         }
     },
 
-    showRestartButton() {
-        // show restart button
+    enableRestartButton() {
+        document.querySelector('#restart-button').disabled = false;
+    },
+
+    disableRestartButton() {
+        document.querySelector('#restart-button').disabled = true;
     }
 }
 
