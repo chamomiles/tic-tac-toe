@@ -6,6 +6,7 @@
 
 html {
   font-size: 62.5%;
+  font-family: 'Arial Rounded MT Bold';
 }
 
 
@@ -17,6 +18,12 @@ html {
   display: flex;
   flex-direction: column;
   margin: auto;
+}
+
+h1 {
+  margin: 20px auto;
+  width: fit-content;
+  font-size: 3rem;
 }
 
 .row {
