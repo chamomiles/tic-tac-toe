@@ -1,4 +1,4 @@
-/* What this app should do
+/* TODO:
 1. Display a tic tac toe board
     - in HTML create a board layout
     2. When the user clicks on a space, add their mark to it
