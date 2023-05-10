@@ -89,8 +89,7 @@ const game = {
     },
 
     checkForGameEnd() {
-        this.checkForWin();
-        this.checkForFull();
+        return this.checkForWin() || this.checkForFull();
     },
 
     checkForWin() {
