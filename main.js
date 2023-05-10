@@ -8,6 +8,7 @@
     - allow changes only if it's empty
     - update the value
     - remember what the space now is
+    - disable the button
 3. Switch to the other player
     - use different values for players
     - switch automatically
@@ -28,5 +29,7 @@ const game = {
         [0, 0, 0]
     ],
 
-    finished: false
+    finished: false;
 }
+
+document.querySelector('.cell').addEventListener('click', game.makeMove);
