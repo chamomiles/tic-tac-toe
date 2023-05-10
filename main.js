@@ -60,7 +60,12 @@ const game = {
         game.board[id] = game.currentPlayer.id;
         console.log(game.board);
 
+        game.disableCell(id);
         game.update();
+    },
+
+    disableCell(id) {
+        document.querySelector(`#cell-${id}`).disabled = true;
     },
 
     switchPlayer() {
