@@ -45,6 +45,7 @@ const game = {
         game.updateMarks();
         game.reenableButtons();
         game.disableRestartButton();
+        game.removeHighlights()
     },
 
     addEventListeners() {
@@ -147,6 +148,12 @@ const game = {
         for (const cell of arr) {
             document.querySelector(`#cell-${cell}`).classList.add('winning');
         }
+    },
+
+    removeHighlights() {
+        for (const boardElement of game.boardElements) {
+            boardElement.classList.remove('winning');
+        };
     }
 }
 

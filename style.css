@@ -10,6 +10,22 @@ html {
 }
 
 
+/* Holo White */
+:root {
+  --holo-intense-pink: rgb(255, 155, 168);
+  --holo-intense-violet: rgb(180, 170, 255);
+  --holo-intense-purple: rgb(213, 168, 255);
+  --holo-intense-blue: rgb(158, 210, 255);
+
+  --holo-white-intense-gradient: radial-gradient(circle,
+                      var(--holo-intense-pink) 7%,
+                      var(--holo-intense-violet) 14%,
+                      var(--holo-intense-purple) 21%,
+                      var(--holo-intense-blue) 28%,
+                      white 35%);
+}
+
+
 /* Buttons */
 
 button, input[type="submit"], input[type="reset"] {
@@ -78,4 +94,16 @@ h1 {
 #restart-button[disabled] {
   color: lightgray;
   border-color: lightgray;
+}
+
+
+/* Winning cells */
+
+.winning {
+  background: var(--holo-white-intense-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
 }
