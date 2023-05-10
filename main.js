@@ -24,12 +24,10 @@
 
 const game = {
     board: [
-        [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0]
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0
     ],
 
-    finished: false;
+    finished: false,
 }
-
-document.querySelector('.cell').addEventListener('click', game.makeMove);
