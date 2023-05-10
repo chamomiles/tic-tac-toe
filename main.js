@@ -33,11 +33,13 @@ const game = {
 
     finished: false,
 
-    updateCell(e) {
-        console.log(e.target.id);
+    setMark(e) {
+        const id = e.target.id.slice(-1);
+        game.board[id] = 1;
+        console.log(game.board);
     },
 }
 
 for (const boardElement of game.boardElements) {
-    boardElement.addEventListener('click', game.updateCell);
+    boardElement.addEventListener('click', game.setMark);
 }
