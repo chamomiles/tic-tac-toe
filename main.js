@@ -31,6 +31,11 @@ const game = {
 
     boardElements: document.querySelectorAll('.cell'),
 
+    players: [
+        {mark: 'x'},
+        {mark: 'o'}
+    ],
+    currentPlayer: players[0],
     finished: false,
 
     update() {
@@ -44,6 +49,7 @@ const game = {
             }
         }
     },
+
     setMark(e) {
         const id = e.target.id.slice(-1);
         game.board[id] = 1;
@@ -51,6 +57,14 @@ const game = {
 
         game.update();
     },
+
+    switchPlayer() {
+        if (this.currentPlayer === players[0]) {
+            this.currentPlayer = players[1];
+        } else {
+            this.currentPlayer = players[0];
+        }
+    }
 }
 
 for (const boardElement of game.boardElements) {
