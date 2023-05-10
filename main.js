@@ -94,11 +94,26 @@ const game = {
     },
 
     checkForWin() {
+        // Horizontal wins
+        if (this.board.slice(0, 3).every((item, _, arr) => item === arr[0])) return this.board[0];
+        if (this.board.slice(3, 6).every((item, _, arr) => item === arr[0])) return this.board[3];
+        if (this.board.slice(6, 9).every((item, _, arr) => item === arr[0])) return this.board[6];
 
+        // Vertical wins
+        if (this.board.filter((_, index) => index % 3 === 0).every((item, _, arr) => item === arr[0])) return this.board[0];
+        if (this.board.filter((_, index) => (index - 1) % 3 === 0).every((item, _, arr) => item === arr[0])) return this.board[1];
+        if (this.board.filter((_, index) => (index - 2) % 3 === 0).every((item, _, arr) => item === arr[0])) return this.board[2];
+
+        // Diagonal wins
+        if (this.board.filter((_, index) => index % 4 === 0).every((item, _, arr) => item === arr[0])) return this.board[0];
+        if (this.board[2] === this.board[4] && this.board[2] === this.board[6]) return this.board[2];
+
+        // No win
+        return 0;
     },
 
     checkForFull() {
-        
+        return !this.board.includes(0);
     }
 }
 
