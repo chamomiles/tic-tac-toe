@@ -43,6 +43,7 @@ const game = {
         this.currentPlayer = this.players[0];
         this.addEventListeners();
         this.updateMarks();
+        this.reenableButtons();
     },
 
     addEventListeners() {
@@ -115,6 +116,12 @@ const game = {
 
     boardIsFull() {
         return !this.board.includes(0);
+    },
+
+    reenableButtons() {
+        for (const boardElement of this.boardElements) {
+            boardElement.disabled = false;
+        }
     }
 }
 
