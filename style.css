@@ -71,6 +71,11 @@ h1 {
   margin: 20px auto;
 }
 
-#restart-button:hover {
+#restart-button:hover:not([disabled]) {
   background: lightskyblue;
+}
+
+#restart-button[disabled] {
+  color: lightgray;
+  border-color: lightgray;
 }
