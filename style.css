@@ -71,3 +71,7 @@ h1 {
   border-radius: 17px;
   margin: 20px auto;
 }
+
+#restart-button:hover {
+  background: lightskyblue;
+}
