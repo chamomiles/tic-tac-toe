@@ -122,6 +122,10 @@ const game = {
         for (const boardElement of this.boardElements) {
             boardElement.disabled = false;
         }
+    },
+
+    showRestartButton() {
+        // show restart button
     }
 }
 
