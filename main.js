@@ -35,7 +35,7 @@ const game = {
         {id: 1, mark: 'x'},
         {id: 2, mark: 'o'}
     ],
-    currentPlayer,
+    currentPlayer: {},
     finished: false,
 
     start() {
@@ -64,7 +64,7 @@ const game = {
 
     setMark(e) {
         const id = e.target.id.slice(-1);
-        game.board[id] = this.currentPlayer.id;
+        game.board[id] = game.currentPlayer.id;
         console.log(game.board);
 
         game.update();
